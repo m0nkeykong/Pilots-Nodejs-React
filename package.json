@@ -1,0 +1,17 @@
+{
+  "name": "full_stack",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Haim Roni",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "mongoose": "^5.1.4"
+  },
+  "devDependencies": {},
+  "description": ""
+}
