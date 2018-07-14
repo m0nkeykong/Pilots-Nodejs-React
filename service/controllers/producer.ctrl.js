@@ -9,7 +9,6 @@ const mongoose = require("mongoose");
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 
-
 //get all producers
 router.get('/', (req, res) => {
   Producer.find({}, (err, docs) => {
@@ -78,6 +77,7 @@ router.delete('/deleteProfile/:id', (req, res) => {
       });
     });
   });
+  
   //now after deleteing all the producer's projects, we can safely delte the producer's profile
   Producer.findByIdAndRemove(req.params.id, (err, docs) => {
     if (err){

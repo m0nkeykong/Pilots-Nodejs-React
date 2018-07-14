@@ -5,7 +5,8 @@ var express = require('express'),
   Project = require('../models/project'),                       //  project schema
   onlyNotEmpty = require('../controllers/onlyNotEmpty');        //  function that checks and validates fields - used for update empty params issue
 const mongoose = require("mongoose"),
-  VIP = 1;      //  for exaple in presentation
+  VIP = 5,      //  for exaple in presentation
+  PERCENT = 0.8;
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
@@ -80,7 +81,7 @@ function checkNegativeVotes(consumer) {
 function updateifSuccess(consumer, ok, total) {
   return new Promise((resolve, reject) => {
     let percentage = parseInt(ok) / parseInt(total);
-    if (ok >= VIP && percentage >= 0.8) {
+    if (ok >= VIP && percentage >= PERCENT) {
       Consumer.findByIdAndUpdate({ _id: consumer._id }, { "vip": true }, (err) => {
         if (err) reject(err);
         else resolve(true);
@@ -217,8 +218,8 @@ router.put('/voteProject/:id/:status', (req, res) => {
 //  Consumer Subscribe to project - DONE
 router.put('/subscribe/:id', (req, res) => {
   Consumer.findById({ _id: req.params.id }, { "subscriptions": { $elemMatch: { $in: req.body.projId } } }, (err, doc) => {
-    //  User note yet Subscribed to this project
-    if (doc[Subscriptions] != req.body.projId) {
+    //  User not yet Subscribed to this project
+    if (doc.subscriptions != req.body.projId) {
       Consumer.findByIdAndUpdate({ _id: req.params.id }, { $push: { "subscriptions": req.body.projId } }, { new: true }, (err, userdoc) => {
         if (err) {
           console.log(err);

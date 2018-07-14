@@ -9,6 +9,7 @@
   "author": "Roni",
   "license": "ISC",
   "dependencies": {
+    "async": "^2.6.1",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "lodash": "^4.17.10",

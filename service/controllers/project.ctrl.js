@@ -136,8 +136,3 @@ router.delete('/deleteProject/:id', (req, res) => {
 });
 
 module.exports = router;
-
-// GET = READ
-// POST = CREATE
-// PUT = UPDATE
-// DELETE = DELETE

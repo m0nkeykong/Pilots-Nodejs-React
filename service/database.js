@@ -2,7 +2,7 @@ require('dotenv').config();
 var mongoose = require('mongoose'),
     options = {autoReconnect: true};
 
-//connect to database with auto-reonnect enabled
+// Connect to database with auto-reonnect enabled
 mongoose.connect(process.env.MLAB_KEY, options);
 
 // When successfully connected
