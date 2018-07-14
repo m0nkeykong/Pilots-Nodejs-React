@@ -1,140 +1,146 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-	<meta http-equiv="content-type" content="text/html; charset=windows-1255"/>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" type="text/css" href="../assets/includes/style.css">
 	<title>Haim and Roni's API</title>
-	<meta name="generator" content="LibreOffice 6.0.5.2 (Windows)"/>
-	<meta name="created" content="00:00:00"/>
-	<meta name="changed" content="2018-07-14T11:45:21.011000000"/>
-	<meta name="" content=""/>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<style type="text/css">
-		h1 { margin-left: 0.1in; margin-right: 0.1in; margin-top: 0.1in; margin-bottom: 0.1in; color: #212529; font-family: "Segoe UI", "Arial", sans-serif; font-size: 27pt; font-weight: normal; line-height: 150%; text-align: left }
-		p { color: #212529; font-family: "Verdana", sans-serif; font-size: 11pt; font-weight: normal; line-height: 150%; text-align: left }
-		h2 { margin-left: 0.1in; margin-right: 0.1in; margin-top: 0.1in; margin-bottom: 0.1in; color: #212529; font-family: "Segoe UI", "Arial", sans-serif; font-size: 22pt; font-weight: normal; line-height: 150%; text-align: left }
-		h3 { margin-left: 0.1in; margin-right: 0.1in; margin-top: 0.1in; margin-bottom: 0.1in; color: #212529; font-family: "Segoe UI", "Arial", sans-serif; font-size: 18pt; font-weight: normal; line-height: 150%; text-align: left }
-		h4 { margin-left: 0.1in; margin-right: 0.1in; margin-top: 0.1in; margin-bottom: 0.1in; color: #212529; font-family: "Segoe UI", "Arial", sans-serif; font-size: 15pt; font-weight: normal; line-height: 150%; text-align: left }
-		pre { color: #212529; font-family: monospace, monospace; font-weight: normal; line-height: 150%; text-align: left }
-		a:link { color: #007bff; background: transparent; text-decoration: none }
-		a:visited { color: #007bff; background: transparent; text-decoration: none }
-	</style>
 </head>
-<body lang="en-US" text="#212529" link="#007bff" vlink="#007bff" bgcolor="#ffffff" dir="ltr">
-<h3><a name="__DdeLink__31_2997458950"></a><a name="__DdeLink__12_2997458950"></a>
-Navigation</h3>
-<ul>
-	<ul>
-		<li/>
-<p style="margin-bottom: 0in"><a href="#producer">Producer</a>
-				</p>
-		<li/>
-<p style="margin-bottom: 0in"><a href="#consumer">Consumer</a>
-				</p>
-		<li/>
-<p><a href="#project">Project</a> 
-		</p>
-	</ul>
-	<h1>PILOTS - RESTful Service API Documentation</h1>
-	<ul>
-		<ul>
-			<ul>
-				<h4><a name="general"></a>General Description</h4>
-			</ul>
-		</ul>
-		<p>This is a general-purpose platform for creators to help bring
-		creative projects to life with the help of consumers who decide
-		which project they are willing to contribute credits to. <br/>
-As a
-		result, help creators to reach the goal they set for themselves and
-		helping creators to publish their projects. <br/>
-This model tracks
-		its roots to subscription model of arts patronage, where artists
-		would go directly to their audiences to fund their work</p>
-		<ul>
-			<ul>
-				<li/>
-<h4><a name="producer"></a>Producer</h4>
-			</ul>
-		</ul>
-		<h2>Schema</h2>
-		<pre>{
+
+<body>
+	<header>
+		<div class="w3-sidebar w3-light-grey w3-bar-block" style="width:15%">
+			<h3 class="w3-bar-item">Navigation</h3>
+			<ul style="list-style: none">
+				<ul>
+					<li>
+						<a href="#producer" class="w3-bar-item w3-button">Producer</a>
+					</li>
+					<li>
+						<a href="#consumer" class="w3-bar-item w3-button">Consumer</a>
+					</li>
+					<li>
+						<a href="#project" class="w3-bar-item w3-button">Project</a>
+					</li>
+				</ul>
+		</div>
+	</header>
+	<main>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1>PILOTS - RESTful Service API Documentation</h1>
+					<ul type="square">
+						<article>
+							<h4 id='general'>General Description</h4>
+							<p>This is a general-purpose platform for creators to help bring creative projects to life with the help of consumers
+								who decide which project they are willing to contribute credits to.
+								<br>As a result, help creators to reach the goal they set for themselves and helping creators to publish their projects.
+								<br>This model tracks its roots to subscription model of arts patronage, where artists would go directly to their audiences
+								to fund their work</p>
+							<li>
+								<h4 id='producer'>Producer</h4>
+							</li>
+							<h2>Schema</h2>
+							<pre>
+{
     id: mongoose.Schema.Types.ObjectId,
     user_name: String,
     password: String,
     full_name: String,
     phone: String,
     email: String,
-    projects: [{ type: mongoose.Schema.Types.ObjectId, ref: &quot;ProjectSchema&quot; }]
+    projects: [{ type: mongoose.Schema.Types.ObjectId, ref: "ProjectSchema" }]
 }</pre>
-		<ul>
-			<h3>/producer/</h3>
-		</ul>
-		<p><b>Request Method:</b> GET 
-		</p>
-		<p><b>Response:</b> all existing producers in the system.</p>
-		<p><b>URL:</b> <a href="https://pilotsapp.herokuapp.com/producer">https://pilotsapp.herokuapp.com/producer</a>
-				</p>
-		<ul>
-			<h3>/producer/createProfile/</h3>
-		</ul>
-		<p><b>Request Method:</b> POST 
-		</p>
-		<p><b>Parameters:</b> user_name, password, full_name, phone, email</p>
-		<p><b>Response:</b> success/fail regarding user creation.</p>
-		<p><b>URL:</b>
-		<a href="https://pilotsapp.herokuapp.com/producer/createProfile">https://pilotsapp.herokuapp.com/producer/createProfile</a>
-				</p>
-		<ul>
-			<h3>/producer/getProfile/:id</h3>
-		</ul>
-		<p><b>Request Method:</b> GET 
-		</p>
-		<p><b>Response:</b> all matching id's profile details.</p>
-		<p><b>URL:</b>
-		<a href="https://pilotsapp.herokuapp.com/producer/getProfile/:id">https://pilotsapp.herokuapp.com/producer/getProfile/:id</a>
-				</p>
-		<pre>{
-    &quot;_id&quot;: {
-        &quot;$oid&quot;: &quot;5b1e49a6a6e87e0798b871bf&quot;
+							<h3>/producer/</h3>
+							<p>
+								<b>Request Method:</b>
+								<span class="badge badge-success">GET</span>
+							</p>
+							<p>
+								<b>Response:</b> all existing producers in the system.</p>
+							<p>
+								<b>URL:</b>
+								<a href="https://pilotsapp.herokuapp.com/producer" class="text-black">https://pilotsapp.herokuapp.com/producer</a>
+							</p>
+
+							<h3>/producer/createProfile/</h3>
+							<p>
+								<b>Request Method:</b>
+								<span class="badge badge-secondary">POST</span>
+							</p>
+							<p>
+								<b>Parameters:</b> user_name, password, full_name, phone, email</p>
+							<p>
+								<b>Response:</b> success/fail regarding user creation.</p>
+							<p>
+								<b>URL:</b>
+								<a href="https://pilotsapp.herokuapp.com/producer/createProfile" class="text-black">https://pilotsapp.herokuapp.com/producer/createProfile</a>
+							</p>
+
+							<h3>/producer/getProfile/:id</h3>
+							<p>
+								<b>Request Method:</b>
+								<span class="badge badge-success">GET</span>
+							</p>
+							<p>
+								<b>Response:</b> all matching id's profile details.</p>
+							<p>
+								<b>URL:</b>
+								<a href="https://pilotsapp.herokuapp.com/producer/getProfile/:id" class="text-black">https://pilotsapp.herokuapp.com/producer/getProfile/:id</a>
+							</p>
+							<pre>
+{
+    "_id": {
+        "$oid": "5b1e49a6a6e87e0798b871bf"
     },
-    &quot;Projects&quot;: [
+    "Projects": [
         {
-            &quot;$oid&quot;: &quot;5b1e4a25a6e87e0798b871c3&quot;
+            "$oid": "5b1e4a25a6e87e0798b871c3"
         }
     ],
-    &quot;User Name&quot;: &quot;m0nkeykong&quot;,
-    &quot;Password&quot;: &quot;xyza1234&quot;,
-    &quot;Full Name&quot;: &quot;Haim Elbaz&quot;,
-    &quot;Phone&quot;: &quot;054-9992341&quot;,
-    &quot;Email&quot;: &quot;lovesbanana@gmail.com&quot;
+    "User Name": "m0nkeykong",
+    "Password": "xyza1234",
+    "Full Name": "Haim Elbaz",
+    "Phone": "054-9992341",
+    "Email": "lovesbanana@gmail.com"
 }</pre>
-		<ul>
-			<h3>producer/updateProfile/:id</h3>
-		</ul>
-		<p><b>Request Method:</b> PUT 
-		</p>
-		<p><b>Parameters:</b> user_name, password, full_name, phone, email</p>
-		<p><b>Response:</b> success/fail regarding profile update.</p>
-		<p><b>URL:</b>
-		<a href="https://pilotsapp.herokuapp.com/producer/updateProfile/:id">https://pilotsapp.herokuapp.com/producer/updateProfile/:id</a>
-				</p>
-		<ul>
-			<h3>producer/deleteProfile/:id</h3>
-		</ul>
-		<p><b>Request Method:</b> DELETE 
-		</p>
-		<p><b>Response:</b> success/fail regarding user deletion.</p>
-		<p><b>URL:</b>
-		<a href="https://pilotsapp.herokuapp.com/producer/deleteProfile/:id">https://pilotsapp.herokuapp.com/producer/deleteProfile/:id</a>
-				</p>
-		<ul>
-			<ul>
-				<li/>
-<h4><a name="consumer"></a>Consumer</h4>
-			</ul>
-		</ul>
-		<h2>Schema</h2>
-		<pre>{
+
+							<h3>producer/updateProfile/:id</h3>
+							<p>
+								<b>Request Method:</b>
+								<span class="badge badge-primary">PUT</span>
+							</p>
+							<p>
+								<b>Parameters:</b> user_name, password, full_name, phone, email</p>
+							<p>
+								<b>Response:</b> success/fail regarding profile update.</p>
+							<p>
+								<b>URL:</b>
+								<a href="https://pilotsapp.herokuapp.com/producer/updateProfile/:id" class="text-black">https://pilotsapp.herokuapp.com/producer/updateProfile/:id</a>
+							</p>
+
+							<h3>producer/deleteProfile/:id</h3>
+							<p>
+								<b>Request Method:</b>
+								<span class="badge badge-danger">DELETE</span>
+							</p>
+							<p>
+								<b>Response:</b> success/fail regarding user deletion.</p>
+							<p>
+								<b>URL:</b>
+								<a href="https://pilotsapp.herokuapp.com/producer/deleteProfile/:id" class="text-black">https://pilotsapp.herokuapp.com/producer/deleteProfile/:id</a>
+							</p>
+
+							<li>
+								<h4 id='consumer'>Consumer</h4>
+							</li>
+							<h2>Schema</h2>
+							<pre>
+{
     id: mongoose.Schema.Types.ObjectId,
     user_name: String,
     password: String,
@@ -143,225 +149,293 @@ This model tracks
     email: String,
     vip: Boolean,
     subscriptions: [
-        { type: mongoose.Schema.Types.ObjectId, ref: &quot;ProjectSchema&quot; }
+        { type: mongoose.Schema.Types.ObjectId, ref: "ProjectSchema" }
     ],
     positive_votes: [
-        { type: mongoose.Schema.Types.ObjectId, ref: &quot;ProjectSchema&quot; }
+        { type: mongoose.Schema.Types.ObjectId, ref: "ProjectSchema" }
     ],
     negative_votes: [
-        { type: mongoose.Schema.Types.ObjectId, ref: &quot;ProjectSchema&quot; }
+        { type: mongoose.Schema.Types.ObjectId, ref: "ProjectSchema" }
     ]
 }</pre>
-		<ul>
-			<h3>/consumer/</h3>
-		</ul>
-		<p><b>Request Method:</b> GET 
-		</p>
-		<p><b>Response:</b> all existing consumers in the system.</p>
-		<p><b>URL:</b> <a href="https://pilotsapp.herokuapp.com/consumer">https://pilotsapp.herokuapp.com/consumer</a>
-				</p>
-		<ul>
-			<h3>/consumer/createProfile</h3>
-		</ul>
-		<p><b>Request Method:</b> POST 
-		</p>
-		<p><b>Parameters:</b> user_name, password, full_name, phone, email</p>
-		<p><b>Response:</b> success/fail regarding user creation.</p>
-		<p><b>URL:</b>
-		<a href="https://pilotsapp.herokuapp.com/consumer/createProfile">https://pilotsapp.herokuapp.com/consumer/createProfile</a>
-				</p>
-		<ul>
-			<h3>/consumer/getProfile/:id</h3>
-		</ul>
-		<p><b>Request Method:</b> GET 
-		</p>
-		<p><b>Response:</b> all matching id's profile details.</p>
-		<p><b>URL:</b>
-		<a href="https://pilotsapp.herokuapp.com/consumer/getProfile/:id">https://pilotsapp.herokuapp.com/consumer/getProfile/:id</a>
-				</p>
-		<pre>{
-    &quot;_id&quot;: {
-        &quot;$oid&quot;: &quot;5b14135fe7179a269ca65c44&quot;
+							<h3>/consumer/</h3>
+							<p>
+								<b>Request Method:</b>
+								<span class="badge badge-success">GET</span>
+							</p>
+							<p>
+								<b>Response:</b> all existing consumers in the system.</p>
+							<p>
+								<b>URL:</b>
+								<a href="https://pilotsapp.herokuapp.com/consumer" class="text-black">https://pilotsapp.herokuapp.com/consumer</a>
+							</p>
+
+							<h3>/consumer/createProfile</h3>
+							<p>
+								<b>Request Method:</b>
+								<span class="badge badge-secondary">POST</span>
+							</p>
+							<p>
+								<b>Parameters:</b> user_name, password, full_name, phone, email</p>
+							<p>
+								<b>Response:</b> success/fail regarding user creation.</p>
+							<p>
+								<b>URL:</b>
+								<a href="https://pilotsapp.herokuapp.com/consumer/createProfile" class="text-black">https://pilotsapp.herokuapp.com/consumer/createProfile</a>
+							</p>
+
+							<h3>/consumer/getProfile/:id</h3>
+							<p>
+								<b>Request Method:</b>
+								<span class="badge badge-success">GET</span>
+							</p>
+							<p>
+								<b>Response:</b> all matching id's profile details.</p>
+							<p>
+								<b>URL:</b>
+								<a href="https://pilotsapp.herokuapp.com/consumer/getProfile/:id" class="text-black">https://pilotsapp.herokuapp.com/consumer/getProfile/:id</a>
+							</p>
+							<pre>
+{
+    "_id": {
+        "$oid": "5b14135fe7179a269ca65c44"
     },
-    &quot;user_name&quot;: &quot;theKingOfLove&quot;,
-    &quot;password&quot;: &quot;xyza1234&quot;,
-    &quot;full_name&quot;: &quot;Roni Polisanov&quot;,
-    &quot;phone&quot;: &quot;034-974-3132&quot;,
-    &quot;email&quot;: &quot;alleyesonme@gmail.com&quot;,
-    &quot;vip&quot;: false,
-    &quot;subscriptions&quot;: [ 5b14135fe7179a269ca65c44 ],
-    &quot;positive_votes&quot;: [ 5b14135fe7179a269ca65c44, 5b14135fe7179a269ca6fdsf2 ],
-    &quot;negative_votes&quot;: [ 5b14135fe7179a269ca6fdgdx ]
+    "user_name": "theKingOfLove",
+    "password": "xyza1234",
+    "full_name": "Roni Polisanov",
+    "phone": "034-974-3132",
+    "email": "alleyesonme@gmail.com",
+    "vip": false,
+    "subscriptions": [ 5b14135fe7179a269ca65c44 ],
+    "positive_votes": [ 5b14135fe7179a269ca65c44, 5b14135fe7179a269ca6fdsf2 ],
+    "negative_votes": [ 5b14135fe7179a269ca6fdgdx ]
 }</pre>
-		<ul>
-			<h3>/consumer/updateProfile/:id</h3>
-		</ul>
-		<p><b>Request Method:</b> PUT 
-		</p>
-		<p><b>Parameters:</b> user_name, password, full_name, phone, email</p>
-		<p><b>Response:</b> success/fail regarding user update.</p>
-		<p><b>URL:</b>
-		<a href="https://pilotsapp.herokuapp.com/consumer/updateProfile/:id">https://pilotsapp.herokuapp.com/consumer/updateProfile/:id</a>
-				</p>
-		<ul>
-			<h3>/consumer/deleteProfile/:id</h3>
-		</ul>
-		<p><b>Request Method:</b> DELETE 
-		</p>
-		<p><b>Response:</b> success/fail regarding user deletion.</p>
-		<p><b>URL:</b>
-		<a href="https://pilotsapp.herokuapp.com/consumer/deleteProfile/:id">https://pilotsapp.herokuapp.com/consumer/deleteProfile/:id</a>
-				</p>
-		<ul>
-			<h3>/consumer/voteProject/:id/:status</h3>
-		</ul>
-		<p><b>Request Method:</b> PUT 
-		</p>
-		<p><b>Parameters:</b> projId</p>
-		<p><b>Response:</b> consumer's name, type of vote casted, voted
-		project's title.</p>
-		<p><b>URL:</b>
-		<a href="https://pilotsapp.herokuapp.com/consumer/voteProject/:id/:status">https://pilotsapp.herokuapp.com/consumer/voteProject/:id/:status</a>
-				</p>
-		<ul>
-			<h3>/consumer/subscribe/:id</h3>
-		</ul>
-		<p><b>Request Method:</b> PUT 
-		</p>
-		<p><b>Response:</b> success/fail regarding subscription.</p>
-		<p><b>URL:</b>
-		<a href="https://pilotsapp.herokuapp.com/consumer/subscribe/:id">https://pilotsapp.herokuapp.com/consumer/subscribe/:id</a>
-				</p>
-		<ul>
-			<h3>/consumer/unsubscribe/:id</h3>
-		</ul>
-		<p><b>Request Method:</b> PUT 
-		</p>
-		<p><b>Response:</b> success/fail regarding subscription removal.</p>
-		<p><b>URL:</b>
-		<a href="https://pilotsapp.herokuapp.com/consumer/unsubscribe/:id">https://pilotsapp.herokuapp.com/consumer/unsubscribe/:id</a>
-				</p>
-		<ul>
-			<ul>
-				<li/>
-<h4><a name="project"></a>Project</h4>
-			</ul>
-		</ul>
-		<h2>Schema</h2>
-		<pre>{
+
+							<h3>/consumer/updateProfile/:id</h3>
+							<p>
+								<b>Request Method:</b>
+								<span class="badge badge-primary">PUT</span>
+							</p>
+							<p>
+								<b>Parameters:</b> user_name, password, full_name, phone, email</p>
+							<p>
+								<b>Response:</b> success/fail regarding user update.</p>
+							<p>
+								<b>URL:</b>
+								<a href="https://pilotsapp.herokuapp.com/consumer/updateProfile/:id" class="text-black">https://pilotsapp.herokuapp.com/consumer/updateProfile/:id</a>
+							</p>
+
+							<h3>/consumer/deleteProfile/:id</h3>
+							<p>
+								<b>Request Method:</b>
+								<span class="badge badge-danger">DELETE</span>
+							</p>
+							<p>
+								<b>Response:</b> success/fail regarding user deletion.</p>
+							<p>
+								<b>URL:</b>
+								<a href="https://pilotsapp.herokuapp.com/consumer/deleteProfile/:id" class="text-black">https://pilotsapp.herokuapp.com/consumer/deleteProfile/:id</a>
+							</p>
+
+							<h3>/consumer/voteProject/:id/:status</h3>
+							<p>
+								<b>Request Method:</b>
+								<span class="badge badge-primary">PUT</span>
+							</p>
+							<p>
+								<b>Parameters:</b> projId</p>
+							<p>
+								<b>Response:</b> consumer's name, type of vote casted, voted project's title.</p>
+							<p>
+								<b>URL:</b>
+								<a href="https://pilotsapp.herokuapp.com/consumer/voteProject/:id/:status" class="text-black">https://pilotsapp.herokuapp.com/consumer/voteProject/:id/:status</a>
+							</p>
+
+							<h3>/consumer/subscribe/:id</h3>
+							<p>
+								<b>Request Method:</b>
+								<span class="badge badge-primary">PUT</span>
+							</p>
+							<p>
+								<b>Parameters:</b> projId</p>
+							</p>
+							<p>
+								<b>Response:</b> success/fail regarding subscription.</p>
+							<p>
+								<b>URL:</b>
+								<a href="https://pilotsapp.herokuapp.com/consumer/subscribe/:id" class="text-black">https://pilotsapp.herokuapp.com/consumer/subscribe/:id</a>
+							</p>
+
+							<h3>/consumer/unsubscribe/:id</h3>
+							<p>
+								<b>Request Method:</b>
+								<span class="badge badge-primary">PUT</span>
+							</p>
+							<p>
+								<b>Parameters:</b> projId</p>
+							</p>
+							<p>
+								<b>Response:</b> success/fail regarding subscription removal.</p>
+							<p>
+								<b>URL:</b>
+								<a href="https://pilotsapp.herokuapp.com/consumer/unsubscribe/:id" class="text-black">https://pilotsapp.herokuapp.com/consumer/unsubscribe/:id</a>
+							</p>
+						</article>
+						<article>
+							<li>
+								<h4 id='project'>Project</h4>
+							</li>
+							<h2>Schema</h2>
+							<pre>
+{
     id: mongoose.Schema.Types.ObjectId,
     category: String,
-    owner: { type: mongoose.Schema.Types.ObjectId, ref: &quot;ProducerSchema&quot; },
+    owner: { type: mongoose.Schema.Types.ObjectId, ref: "ProducerSchema" },
     title: String,
     goal: Number,
     positive_voters: [
-        { type: mongoose.Schema.Types.ObjectId, ref: &quot;ConsumerSchema&quot; }
+        { type: mongoose.Schema.Types.ObjectId, ref: "ConsumerSchema" }
     ],
     negative_voters: [
-        { type: mongoose.Schema.Types.ObjectId, ref: &quot;ConsumerSchema&quot; }
+        { type: mongoose.Schema.Types.ObjectId, ref: "ConsumerSchema" }
     ],
     goal_status: Number,
     open_timestamp: Date,
     description: String,
-    deadline: String,
-    cover_image: String,
+	deadline: String,
+	cover_image: String
     subscribers: [
-        { type: mongoose.Schema.Types.ObjectId, ref: &quot;ConsumerSchema&quot; }
+        { type: mongoose.Schema.Types.ObjectId, ref: "ConsumerSchema" }
     ]
 }</pre>
-		<ul>
-			<h3>/project/</h3>
-		</ul>
-		<p><b>Request Method:</b> GET 
-		</p>
-		<p><b>Response:</b> all projects details.</p>
-		<p><b>URL:</b> <a href="https://pilotsapp.herokuapp.com/project">https://pilotsapp.herokuapp.com/project</a>
-				</p>
-		<pre>{
-    &quot;_id&quot;: {
-        &quot;$oid&quot;: &quot;5b1e4a25a6e87e0798b871c3&quot;
+
+							<h3>/project/</h3>
+							<p>
+								<b>Request Method:</b>
+								<span class="badge badge-success">GET</span>
+							</p>
+							<p>
+								<b>Response:</b> all projects details.</p>
+							<p>
+								<b>URL:</b>
+								<a href="https://pilotsapp.herokuapp.com/project" class="text-black">https://pilotsapp.herokuapp.com/project</a>
+							</p>
+							<pre>
+{
+    "_id": {
+        "$oid": "5b1e4a25a6e87e0798b871c3"
     },
-    &quot;owner&quot;: {
-        &quot;$oid&quot;: &quot;5b1e49a6a6e87e0798b871bf&quot;
+    "owner": {
+        "$oid": "5b1e49a6a6e87e0798b871bf"
     },
-    &quot;title&quot;: &quot;I-Fill-U&quot;,
-    &quot;category&quot;: &quot;Projects&quot;,
-    &quot;open_timestamp&quot;: &quot;18/06/2018 16:93:00&quot;,
-    &quot;description&quot;: &quot;A cyber-sex suit in order to help those who can't let their loved ones the feelings they deserve.&quot;,
-    &quot;goal&quot;: 100000,
-    &quot;goal_status&quot;: 5,
-    &quot;positive_voters&quot;: [ 5b14135fe7179a269ca65c44, fj89f3n29e7179a269ca65c44, 13hf239ke7179a269ca65c44, 5b14135fe7sg2435isac44 ],
-    &quot;negative_voters&quot;: [],
-    &quot;subscribers&quot;: [ 5b14135fe7179a269ca65c44, fj89f3n29e7179a269ca65c44, 13hf239ke7179a269ca65c44 ],
-<a name="__DdeLink__5_2997458950"></a>    &quot;deadline&quot;: &quot;21/07/2018 18:00:00&quot;,
-    &quot;cover_image&quot;: &quot;www.tinyturl.com/image12323&quot;
+    "title": "I-Fill-U",
+    "category": "Projects",
+    "open_timestamp": "18/06/2018 16:93:00",
+    "description": "A cyber-sex suit in order to help those who can't let their loved ones the feelings they deserve.",
+    "goal": 100000,
+    "goal_status": 5,
+    "positive_voters": [ 5b14135fe7179a269ca65c44, fj89f3n29e7179a269ca65c44, 13hf239ke7179a269ca65c44, 5b14135fe7sg2435isac44 ],
+    "negative_voters": [],
+    "subscribers": [ 5b14135fe7179a269ca65c44, fj89f3n29e7179a269ca65c44, 13hf239ke7179a269ca65c44 ],
+	"deadline": "21/07/2018 18:00:00",
+	"cover_image": "www.imagestore.com/iamge123123.jpeg"
 }</pre>
-		<ul>
-			<h3>/project/createProject/:owner</h3>
-		</ul>
-		<p><b>Request Method:</b> POST 
-		</p>
-		<p><b>Response:</b> created project and owner.</p>
-		<p><b>Parameters:</b> category, title, goal, description</p>
-		<p><b>URL:</b>
-		<a href="https://pilotsapp.herokuapp.com/project/createProject/:owner">https://pilotsapp.herokuapp.com/project/createProject/:owner</a>
-				</p>
-		<ul>
-			<h3>/project/getById/:id</h3>
-		</ul>
-		<p><b>Request Method:</b> GET 
-		</p>
-		<p><b>Response:</b> all matching project Id's details.</p>
-		<p><b>URL:</b> <a href="https://pilotsapp.herokuapp.com/project/getById/:id">https://pilotsapp.herokuapp.com/project/getById/:id</a>
-				</p>
-		<ul>
-			<h3>/project/getByOwner/:owner</h3>
-		</ul>
-		<p><b>Request Method:</b> GET 
-		</p>
-		<p><b>Response:</b> all matching project owner's details.</p>
-		<p><b>URL:</b>
-		<a href="https://pilotsapp.herokuapp.com/project/getByOwner/:owner">https://pilotsapp.herokuapp.com/project/getByOwner/:owner</a>
-				</p>
-		<ul>
-			<h3>/project/getByCategory/:category</h3>
-		</ul>
-		<p><b>Request Method:</b> GET 
-		</p>
-		<p><b>Response:</b> all matching project category's details.</p>
-		<p><b>URL:</b>
-		<a href="https://pilotsapp.herokuapp.com/project/getByCategory/:owner">https://pilotsapp.herokuapp.com/project/getByCategory/:owner</a>
-				</p>
-		<ul>
-			<h3>/project/getByVotes/:positive_voters</h3>
-		</ul>
-		<p><b>Request Method:</b> GET 
-		</p>
-		<p><b>Response:</b> all matching project details that match the
-		voters amount.</p>
-		<p><b>URL:</b>
-		<a href="https://pilotsapp.herokuapp.com/project/getByVotes/:positive_voters">https://pilotsapp.herokuapp.com/project/getByVotes/:positive_voters</a>
-				</p>
-		<ul>
-			<h3>/project/updateProject/:id</h3>
-		</ul>
-		<p><b>Request Method:</b> PUT 
-		</p>
-		<p><b>Response:</b> success/fail regarding project's update.</p>
-		<p><b>Parameters:</b> category, title, goal, description</p>
-		<p><b>URL:</b>
-		<a href="https://pilotsapp.herokuapp.com/project/updateProject/:id">https://pilotsapp.herokuapp.com/project/updateProject/:id</a>
-				</p>
-		<ul>
-			<h3>/project/deleteProject/:id</h3>
-		</ul>
-		<p><b>Request Method:</b> DELETE 
-		</p>
-		<p><b>Response:</b> success/fail regarding project's removal.</p>
-		<p><b>URL:</b>
-		<a href="https://pilotsapp.herokuapp.com/project/deleteProject/:id">https://pilotsapp.herokuapp.com/project/deleteProject/:id</a>
-				</p>
-	</ul>
-</ul>
+
+							<h3>/project/createProject/:owner</h3>
+							<p>
+								<b>Request Method:</b>
+								<span class="badge badge-secondary">POST</span>
+							</p>
+							<p>
+								<b>Response:</b> created project and owner.</p>
+							<p>
+								<b>Parameters:</b> category, title, goal, description</p>
+							<p>
+								<b>URL:</b>
+								<a href="https://pilotsapp.herokuapp.com/project/createProject/:owner" class="text-black">https://pilotsapp.herokuapp.com/project/createProject/:owner</a>
+							</p>
+
+							<h3>/project/getById/:id</h3>
+							<p>
+								<b>Request Method:</b>
+								<span class="badge badge-success">GET</span>
+							</p>
+							<p>
+								<b>Response:</b> all matching project Id's details.</p>
+							<p>
+								<b>URL:</b>
+								<a href="https://pilotsapp.herokuapp.com/project/getById/:id" class="text-black">https://pilotsapp.herokuapp.com/project/getById/:id</a>
+							</p>
+
+							<h3>/project/getByOwner/:owner</h3>
+							<p>
+								<b>Request Method:</b>
+								<span class="badge badge-success">GET</span>
+							</p>
+							<p>
+								<b>Response:</b> all matching project owner's details.</p>
+							<p>
+								<b>URL:</b>
+								<a href="https://pilotsapp.herokuapp.com/project/getByOwner/:owner" class="text-black">https://pilotsapp.herokuapp.com/project/getByOwner/:owner</a>
+							</p>
+
+							<h3>/project/getByCategory/:category</h3>
+							<p>
+								<b>Request Method:</b>
+								<span class="badge badge-success">GET</span>
+							</p>
+							<p>
+								<b>Response:</b> all matching project category's details.</p>
+							<p>
+								<b>URL:</b>
+								<a href="https://pilotsapp.herokuapp.com/project/getByCategory/:owner" class="text-black">https://pilotsapp.herokuapp.com/project/getByCategory/:owner</a>
+							</p>
+
+							<h3>/project/getByVotes/:positive_voters</h3>
+							<p>
+								<b>Request Method:</b>
+								<span class="badge badge-success">GET</span>
+							</p>
+							<p>
+								<b>Response:</b> all matching project details that match the voters amount.</p>
+							<p>
+								<b>URL:</b>
+								<a href="https://pilotsapp.herokuapp.com/project/getByVotes/:positive_voters" class="text-black">https://pilotsapp.herokuapp.com/project/getByVotes/:positive_voters</a>
+							</p>
+
+							<h3>/project/updateProject/:id</h3>
+							<p>
+								<b>Request Method:</b>
+								<span class="badge badge-primary">PUT</span>
+							</p>
+							<p>
+								<b>Response:</b> success/fail regarding project's update.</p>
+							<p>
+								<b>Parameters:</b> category, title, goal, description</p>
+							<p>
+								<b>URL:</b>
+								<a href="https://pilotsapp.herokuapp.com/project/updateProject/:id" class="text-black">https://pilotsapp.herokuapp.com/project/updateProject/:id</a>
+							</p>
+
+							<h3>/project/deleteProject/:id</h3>
+							<p>
+								<b>Request Method:</b>
+								<span class="badge badge-danger">DELETE</span>
+							</p>
+							<p>
+								<b>Response:</b> success/fail regarding project's removal.</p>
+							<p>
+								<b>URL:</b>
+								<a href="https://pilotsapp.herokuapp.com/project/deleteProject/:id" class="text-black">https://pilotsapp.herokuapp.com/project/deleteProject/:id</a>
+							</p>
+						</article>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</main>
+	<footer>
+	</footer>
 </body>
+
 </html>
