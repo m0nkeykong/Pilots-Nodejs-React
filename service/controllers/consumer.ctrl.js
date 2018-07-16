@@ -239,7 +239,7 @@ router.put('/subscribe/:id', (req, res) => {
 });
 
 //  UnSubscribe to project - DONE
-router.delete('/unsubscribe/:id', (req, res) => {
+router.put('/unsubscribe/:id', (req, res) => {
   Consumer.findByIdAndUpdate({ _id: req.params.id }, { $pull: { "subscriptions": req.body.projId } }, { new: true }, (err, userdoc) => {
     if (err) {
       console.log(err);
